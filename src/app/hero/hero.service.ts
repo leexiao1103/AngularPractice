@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Hero, HEROES } from './hero.model';
+import { Hero } from './hero.model';
 import { MessageService } from '../messages/messages.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
-import { temporaryAllocator } from '@angular/compiler/src/render3/view/util';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -53,14 +52,14 @@ export class HeroService {
     const url = `${this.heroesUrl}/${id}`;
 
     return this.http.delete(url, httpOptions).pipe(
-      tap(_ => this.log(`HeroService: Deleted Hero ID=${id}.`)),
+      tap(_ => this.log(`Deleted Hero ID=${id}`)),
       catchError(this.handleError<any>('deleteHero'))
     );
   }
 
   getHeroes(): Observable<Hero[]> {
     return this.http.get<Hero[]>(this.heroesUrl).pipe(
-      tap(_ => this.log('HeroService: Hero list fetched.')),
+      tap(_ => this.log('Hero list fetched')),
       catchError(this.handleError<Hero[]>('getHeroes', []))
     );
   }
@@ -69,7 +68,7 @@ export class HeroService {
     const url = `${this.heroesUrl}/${id}`;
 
     return this.http.get<Hero>(url).pipe(
-      tap(_ => this.log(`HeroService: Fetch Hero, ID: ${id}.`)),
+      tap(_ => this.log(`Fetch Hero, ID: ${id}`)),
       catchError(this.handleError<Hero>(`getHero id=${id}`))
     );
   }
@@ -78,7 +77,7 @@ export class HeroService {
     if (!term.trim()) { return of([]); }
 
     return this.http.get<Hero[]>(`${this.heroesUrl}/?name=${term}`).pipe(
-      tap(_ => this.log(`HeroService: Hero Search ${term}.`)),
+      tap(_ => this.log(`Hero Search ${term}`)),
       catchError(this.handleError<Hero[]>('searchHero', []))
     );
 
