@@ -5,13 +5,15 @@ import { InjectorTestService } from './injector-test.service';
 import { ProvideFromServiceComponent } from './provide-from-service/provide-from-service.component';
 import { ProvideFromModuleComponent } from './provide-from-module/provide-from-module.component';
 import { ProvideFromComponentComponent } from './provide-from-component/provide-from-component.component';
+import { InjectorTestComponent } from './injector-test.component';
 
 @NgModule({
   declarations: [
     InjectorTestModule,
     ProvideFromServiceComponent,
     ProvideFromModuleComponent,
-    ProvideFromComponentComponent
+    ProvideFromComponentComponent,
+    InjectorTestComponent
   ],
   imports: [
     CommonModule,
