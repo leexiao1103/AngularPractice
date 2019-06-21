@@ -12,7 +12,11 @@ import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './hero/dashboard/dashboard.component';
 import { InMemoryDataService } from './in-memory-data.service';
 import { HeroSearchComponent } from './hero/hero-search/hero-search.component';
-import { InjectorTestComponent } from './injector-test/injector-test.component';
+import { InjectorTestModule } from './injector-test/injector-test.module';
+import { ToolbarModule } from './toolbar/toolbar.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LandingComponent } from './landing/landing.component';
+import { PageNotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 @NgModule({
   declarations: [
@@ -22,14 +26,21 @@ import { InjectorTestComponent } from './injector-test/injector-test.component';
     MessagesComponent,
     DashboardComponent,
     HeroSearchComponent,
-    InjectorTestComponent
+    LandingComponent,
+    PageNotfoundComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false })
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false }),
+
+
+
+    InjectorTestModule,
+    ToolbarModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

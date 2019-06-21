@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { MessageService } from '../messages/messages.service';
+import { InjectorTestModule } from './injector-test.module';
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class InjectorTestService {
+export class NewInjectorTestService {
   private _id: string;
   private _testValue: string;
 
@@ -30,6 +32,6 @@ export class InjectorTestService {
   }
 
   log(input: string): void {
-    this.messageService.add(`InjectorTestService: ${input}.`);
+    this.messageService.add(`NewInjectorTestService: ${input}.`);
   }
 }

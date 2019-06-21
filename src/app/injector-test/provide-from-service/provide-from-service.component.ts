@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Optional } from '@angular/core';
 import { InjectorTestService } from '../injector-test.service';
 
 @Component({
@@ -7,12 +7,13 @@ import { InjectorTestService } from '../injector-test.service';
   styleUrls: ['./provide-from-service.component.css']
 })
 export class ProvideFromServiceComponent implements OnInit {
-  testValue: string;
+  serviceId: string;
 
-  constructor(private injectorTestService: InjectorTestService) { }
+  constructor(@Optional() private injectorTestService: InjectorTestService) { }
 
   ngOnInit() {
-    this.testValue = this.injectorTestService.getTestValue;
+    this.serviceId = this.injectorTestService.id;
+    this.injectorTestService.log(`ID: ${this.serviceId}, Take By ProvideFromService`);
   }
 
   change(input: string): void {

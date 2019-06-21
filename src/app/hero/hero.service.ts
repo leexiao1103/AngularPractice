@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Hero } from './hero.model';
+
 import { MessageService } from '../messages/messages.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
+import { Hero } from '../model/hero.model';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
