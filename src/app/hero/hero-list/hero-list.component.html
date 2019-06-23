@@ -1,0 +1,16 @@
+<mat-form-field appearance="outline">
+  <mat-label>Add Hero</mat-label>
+  <input matInput placeholder="Hero Name">
+  <button mat-button matSuffix mat-icon-button aria-label="add" (click)="value=''">
+    <mat-icon>add</mat-icon>
+  </button>
+</mat-form-field>
+
+<mat-nav-list>
+  <mat-list-item *ngFor="let hero of heroes" routerLink="/detail/{{hero.id}}">
+    <p mat-line>{{hero.id}}. {{hero.name}}</p>
+    <button mat-button mat-icon-button aria-label="add" color="warn" (click)="delete(hero)">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-list-item>
+</mat-nav-list>
