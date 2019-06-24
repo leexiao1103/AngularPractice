@@ -28,6 +28,8 @@ export class HeroSearchComponent implements OnInit {
   }
 
   search(term: string): void {
+    console.log(term);
     this.searchTerms.next(term);
+
   }
 }

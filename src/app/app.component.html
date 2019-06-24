@@ -1,10 +1,27 @@
-<app-navigation></app-navigation>
+<mat-toolbar class="main-header" color="primary">
+  <button mat-icon-button (click)="sideNav.toggle()">
+    <mat-icon>{{ sideNav.opened ? 'close' : 'menu' }}</mat-icon>
+  </button>
+  <span class="title"><a routerLink="/">Hello Angular</a></span>
 
-<router-outlet></router-outlet>
+  <span class="header-seprator"></span>
 
+  <nav class="menu">
+    <button mat-button routerLink="/heroes">Heroes</button>
+    <button mat-button routerLink="/injector-test">Injector Test</button>
+    <button mat-button routerLink="/admin">Admin</button>
+    <button mat-button routerLink="/login">Login</button>
+  </nav>
+</mat-toolbar>
 
+<mat-sidenav-container class="main-container">
 
-<!-- <div>
-  <app-messages *ngIf="showMessage" class="message"></app-messages>
+  <mat-sidenav class="main-sidenav" #sideNav>
+    SideNav
+  </mat-sidenav>
 
-</div> -->
+  <mat-sidenav-content class="main-content">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>

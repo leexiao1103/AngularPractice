@@ -3,8 +3,21 @@ import { Routes, RouterModule } from '@angular/router';
 import { InjectorTestComponent } from './injector-test/injector-test.component';
 import { PageNotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { LandingComponent } from './landing/landing.component';
+import { AdminComponent } from './admin/admin.component';
+import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'admin',
+    canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
+    component: AdminComponent
+  },
   {
     path: 'injector-test',
     component: InjectorTestComponent
@@ -20,7 +33,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { enableTracing: true })],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

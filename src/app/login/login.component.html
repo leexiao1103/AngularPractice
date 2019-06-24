@@ -1,0 +1,16 @@
+<h3 *ngIf="!loginStatus">Let's Login</h3>
+<h3 *ngIf="loginStatus">Hello {{role}}</h3>
+<mat-spinner *ngIf="loading" diameter="20"></mat-spinner>
+
+<div>
+  <mat-form-field appearance="outline" *ngIf="!loginStatus">
+    <mat-label>Role</mat-label>
+    <input matInput #inputName type="text" placeholder="Who are you~?" (keyup.enter)="login(inputName.value)"
+      (keyup.escape)="inputName.value=''">
+  </mat-form-field>
+</div>
+
+
+
+<button mat-stroked-button *ngIf="!loginStatus" (click)="login(inputName.value)" color="primary">Login</button>
+<button mat-stroked-button *ngIf="loginStatus" (click)="logout()" color="primary">Logout</button>

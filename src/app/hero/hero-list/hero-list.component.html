@@ -1,7 +1,7 @@
 <mat-form-field appearance="outline">
   <mat-label>Add Hero</mat-label>
-  <input matInput placeholder="Hero Name">
-  <button mat-button matSuffix mat-icon-button aria-label="add" (click)="value=''">
+  <input matInput placeholder="Hero Name" #inputName>
+  <button mat-button matSuffix mat-icon-button aria-label="add" (click)="add(inputName.value)">
     <mat-icon>add</mat-icon>
   </button>
 </mat-form-field>
