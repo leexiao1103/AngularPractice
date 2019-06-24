@@ -6,6 +6,7 @@ import { LandingComponent } from './landing/landing.component';
 import { AdminComponent } from './admin/admin.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth/auth.guard';
+import { SuperadminComponent } from './admin/superadmin/superadmin.component';
 
 const routes: Routes = [
   {
@@ -16,7 +17,13 @@ const routes: Routes = [
     path: 'admin',
     canActivate: [AuthGuard],
     canActivateChild: [AuthGuard],
-    component: AdminComponent
+    component: AdminComponent,
+    children: [
+      {
+        path: 'superadmin',
+        component: SuperadminComponent
+      }
+    ]
   },
   {
     path: 'injector-test',

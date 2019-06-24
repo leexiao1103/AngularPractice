@@ -12,12 +12,14 @@ export class AuthGuard implements CanActivate, CanActivateChild {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
+    console.log('canActivate')
     return this.checkLogin(state.url);
   }
   canActivateChild(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
-    return this.canActivate(next, state);
+    console.log('canActivateChild')
+    return this.checkRole(state.url);
   }
 
   checkLogin(url: string) {
@@ -26,6 +28,16 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     this.authService.redirectUrl = url;
 
     this.router.navigate(['/login']);
+
+    return false;
+  }
+
+  checkRole(url: string) {
+    if (this.authService.role.toLowerCase() === 'super') { return true; }
+
+    this.authService.redirectUrl = url;
+
+    this.router.navigate(['/admin']);
 
     return false;
   }

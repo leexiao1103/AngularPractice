@@ -23,16 +23,17 @@ export class LoginComponent implements OnInit {
     return this.authService.isLogin;
   }
 
-  getRole():string{
+  getRole(): string {
     return this.authService.role;
   }
 
   login(role: string) {
+    console.log(role)
     this.loading = true;
     this.authService.login(role).subscribe(() => {
       if (this.authService.isLogin) {
 
-        const redirect = this.authService.redirectUrl ? this.router.parseUrl(this.authService.redirectUrl) : '/admin';
+        const redirect = this.authService.redirectUrl ? this.router.parseUrl(this.authService.redirectUrl) : '/admin/superadmin';
 
         //原本url參數帶著(應該)
         const navigationExtras: NavigationExtras = {

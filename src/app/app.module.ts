@@ -22,6 +22,7 @@ import { HeroModule } from './hero/hero.module';
 import { ShareMaterialModule } from './module/share-material.module';
 import { AdminComponent } from './admin/admin.component';
 import { LoginComponent } from './login/login.component';
+import { SuperadminComponent } from './admin/superadmin/superadmin.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { LoginComponent } from './login/login.component';
     WeirdstringPipe,
     AdminComponent,
     LoginComponent,
+    SuperadminComponent,
   ],
   imports: [
     BrowserModule,

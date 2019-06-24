@@ -6,7 +6,7 @@
   </button>
 </mat-form-field>
 
-<mat-nav-list>
+<mat-nav-list style="text-align: left">
   <mat-list-item *ngFor="let hero of heroes" routerLink="/detail/{{hero.id}}">
     <p mat-line>{{hero.id}}. {{hero.name}}</p>
     <button mat-button mat-icon-button aria-label="add" color="warn" (click)="delete(hero)">
