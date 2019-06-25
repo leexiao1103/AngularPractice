@@ -4,6 +4,7 @@ import { HeroComponent } from './hero.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { HeroListComponent } from './hero-list/hero-list.component';
+import { AuthGuard } from '../auth/auth.guard';
 
 const routes: Routes = [
   {
@@ -12,21 +13,28 @@ const routes: Routes = [
     children: [
       {
         path: 'dashboard',
-        component: DashboardComponent
+        component: DashboardComponent,
+        children: [
+          {
+            path: 'detail/:id',
+            component: HeroDetailComponent,
+            canDeactivate: [AuthGuard]
+          }
+        ]
       },
       {
         path: 'hero-list',
-        component: HeroListComponent
-      },
-
-
-
+        component: HeroListComponent,
+        children: [
+          {
+            path: 'detail/:id',
+            component: HeroDetailComponent,
+            canDeactivate: [AuthGuard]
+          }
+        ]
+      }
     ]
-  },
-  {
-    path: 'detail/:id',
-    component: HeroDetailComponent
-  },
+  }
 ];
 
 @NgModule({

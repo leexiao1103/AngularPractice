@@ -1,14 +1,15 @@
 <div *ngIf="hero">
 
   <h2>{{hero.name | uppercase}} Details</h2>
-  <div><span>id: </span>{{hero.id}}</div>
   <div>
-    <label>name:
-      <input [(ngModel)]="hero.name" placeholder="name"/>
-    </label>
+    <mat-form-field>
+      <mat-label>ID-{{hero.id}}</mat-label>
+      <input matInput #inputName [(ngModel)]="hero.name" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete"></mat-autocomplete>
+    </mat-form-field>
   </div>
+  <button mat-stroked-button color="warn" (click)="goBack()">Go Back</button>
+  <button mat-stroked-button color="primary" (click)="save()">Save</button>
 
 </div>
-<button (click)="goBack()">Go Back</button>
-<button (click)="save()">Save</button>
 

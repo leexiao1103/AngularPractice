@@ -1,3 +1,24 @@
-<p>
-  superadmin works!
-</p>
+<mat-tab-group mat-stretch-tabs animationDuration="0ms">
+
+
+  <mat-tab label="Change InjectorTest Service">
+    <mat-form-field appearance="outline">
+      <mat-label>Change</mat-label>
+      <input #inputValue matInput placeholder="Some value" (keyup.enter)="changeValue(inputValue.value)">
+      <button mat-button mat-icon-button color="warn" mat-icon-button matSuffix (click)="changeValue(inputValue.value)">
+        <mat-icon>arrow_forward</mat-icon>
+      </button>
+    </mat-form-field>
+  </mat-tab>
+
+  <mat-tab label="Add Hero">
+    <mat-form-field appearance="outline">
+      <mat-label>Add Hero</mat-label>
+      <input matInput placeholder="Hero Name" #inputName>
+      <button mat-button matSuffix mat-icon-button color="warn" (click)="add(inputName.value)">
+        <mat-icon>add</mat-icon>
+      </button>
+    </mat-form-field>
+  </mat-tab>
+  <mat-tab label="Third"> Content 3 </mat-tab>
+</mat-tab-group>

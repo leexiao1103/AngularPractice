@@ -1,10 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 
 
 import { HeroService } from '../hero.service';
 import { Hero } from 'src/app/model/hero.model';
+import { switchMap, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-hero-detail',
@@ -13,6 +14,7 @@ import { Hero } from 'src/app/model/hero.model';
 })
 export class HeroDetailComponent implements OnInit {
   hero: Hero;
+  oriName: String;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,9 +27,18 @@ export class HeroDetailComponent implements OnInit {
   }
 
   getHero(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
+    this.route.params
+      .pipe(
+        tap(_ => this.hero = null),
+        switchMap((params: Params) => this.heroService.getHero(+params.id))
+      )
+      .subscribe(hero => {
+        this.oriName = hero.name;
+        this.hero = hero;
+      });
 
-    this.heroService.getHero(id).subscribe(hero => this.hero = hero);
+    // const id = +this.route.snapshot.paramMap.get('id');
+    // this.heroService.getHero(id).subscribe(hero => this.hero = hero);
   }
 
   goBack(): void {
