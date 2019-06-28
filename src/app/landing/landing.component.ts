@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MessageService } from '../messages/messages.service';
 
 @Component({
   selector: 'app-landing',
@@ -9,7 +10,7 @@ export class LandingComponent implements OnInit {
   title = 'angular practice';
 
 
-  constructor() { }
+  constructor(private messageService: MessageService) { }
 
   ngOnInit() {
   }

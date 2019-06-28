@@ -1,5 +1,6 @@
 import { Component, OnInit, Optional } from '@angular/core';
 import { InjectorTestService } from '../injector-test.service';
+import { ModuleService } from '../module.service';
 
 @Component({
   selector: 'app-provide-from-service',
@@ -8,11 +9,13 @@ import { InjectorTestService } from '../injector-test.service';
 })
 export class ProvideFromServiceComponent implements OnInit {
   serviceId: string;
+  moduleServiceId: string;
 
-  constructor(@Optional() private injectorTestService: InjectorTestService) { }
+  constructor(private injectorTestService: InjectorTestService, private moduleService: ModuleService) { }
 
   ngOnInit() {
     this.serviceId = this.injectorTestService.id;
+    this.moduleServiceId = this.moduleService.id;
     this.injectorTestService.log(`ID: ${this.serviceId}, Take By ProvideFromService`);
   }
 

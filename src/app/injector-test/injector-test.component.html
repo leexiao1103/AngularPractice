@@ -1,6 +1,17 @@
-<app-provide-from-component></app-provide-from-component>
+<p>{{nullTest?.name}}</p>
+
+<app-provide-from-component appInjectorTest></app-provide-from-component>
 
 <app-provide-from-service></app-provide-from-service>
 
+
+
+
+<div *ngIf="show">
+  <app-more-test [giveMe]="inputValue.value"></app-more-test>
+  <input #inputValue matInput (keyup.enter)="clickMe(inputValue.value)" [(ngModel)]="input">
+</div>
+
+<button (click)="clickMe(inputValue.value)">Click Me</button>
 
 

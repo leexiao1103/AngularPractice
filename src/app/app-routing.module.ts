@@ -10,6 +10,10 @@ import { SuperadminComponent } from './admin/superadmin/superadmin.component';
 
 const routes: Routes = [
   {
+    path: 'heroes',
+    loadChildren: () => import('./hero/hero.module').then(v => v.HeroModule)
+  },
+  {
     path: 'login',
     component: LoginComponent
   },

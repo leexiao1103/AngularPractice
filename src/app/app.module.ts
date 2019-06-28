@@ -23,6 +23,7 @@ import { ShareMaterialModule } from './module/share-material.module';
 import { AdminComponent } from './admin/admin.component';
 import { LoginComponent } from './login/login.component';
 import { SuperadminComponent } from './admin/superadmin/superadmin.component';
+import { ModuleService } from './injector-test/module.service';
 
 @NgModule({
   declarations: [
@@ -44,8 +45,7 @@ import { SuperadminComponent } from './admin/superadmin/superadmin.component';
 
     ShareMaterialModule,
 
-
-    HeroModule,
+    //HeroModule,
     InjectorTestModule,
     LayoutModule,
 

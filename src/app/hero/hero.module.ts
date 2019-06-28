@@ -9,6 +9,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormsModule } from '@angular/forms';
 import { ShareMaterialModule } from '../module/share-material.module';
 import { HeroListComponent } from './hero-list/hero-list.component';
+import { ModuleService } from '../injector-test/module.service';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { HeroListComponent } from './hero-list/hero-list.component';
     FormsModule,
     ShareMaterialModule,
     HeroRoutingModule
-  ]
+  ],
+  providers: [ModuleService]
 })
 export class HeroModule { }

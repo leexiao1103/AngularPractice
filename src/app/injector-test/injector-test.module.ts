@@ -4,16 +4,18 @@ import { CommonModule } from '@angular/common';
 import { ProvideFromServiceComponent } from './provide-from-service/provide-from-service.component';
 import { ProvideFromComponentComponent } from './provide-from-component/provide-from-component.component';
 import { InjectorTestComponent } from './injector-test.component';
-import { InjectorTestService } from './injector-test.service';
-import { NewInjectorTestService } from './new-injector-test.service';
-import { ProvideFromRootComponent } from './provide-from-root/provide-from-root.component';
+import { InjectorTestDirective } from './injector-test.directive';
+import { MoreTestComponent } from './more-test/more-test.component';
+import { ModuleService } from './module.service';
+
 
 @NgModule({
   declarations: [
     InjectorTestComponent,
     ProvideFromComponentComponent,
     ProvideFromServiceComponent,
-    ProvideFromRootComponent
+    InjectorTestDirective,
+    MoreTestComponent
   ],
   imports: [
     CommonModule,
@@ -22,12 +24,8 @@ import { ProvideFromRootComponent } from './provide-from-root/provide-from-root.
   exports: [
     InjectorTestComponent,
     ProvideFromComponentComponent,
-    ProvideFromServiceComponent,
-    ProvideFromRootComponent
+    ProvideFromServiceComponent
   ],
-  providers: [
-    NewInjectorTestService,
-    { provide: InjectorTestService, useExisting: NewInjectorTestService }
-  ]
+  providers: [ModuleService]
 })
 export class InjectorTestModule { }

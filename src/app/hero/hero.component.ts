@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModuleService } from '../injector-test/module.service';
 
 @Component({
   selector: 'app-heroes',
@@ -6,11 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./hero.component.css']
 })
 export class HeroComponent implements OnInit {
-
-  constructor() { }
+  moduleServiceId: string;
+  constructor(private moduleService: ModuleService) { }
 
   ngOnInit() {
-
+    this.moduleServiceId = this.moduleService.id;
   }
 
 }
